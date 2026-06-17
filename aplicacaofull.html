@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Economiza360 — MEP | Mapa de Economia Potencial</title>
+<meta name="description" content="Descubra quanto dinheiro sua empresa está perdendo agora. Sessão MEP gratuita com especialistas da Economiza360.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ========== RESET & BASE ========== */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Inter',sans-serif;background:#0a0a0a;color:#e5e5e5;line-height:1.6;overflow-x:hidden;padding-bottom:80px}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+button,input,select,textarea{font-family:inherit;font-size:inherit;border:none;outline:none}
+
+/* ========== VARIÁVEIS ========== */
+:root{
+  --orange:#FF5A00;
+  --orange-hover:#e64f00;
+  --orange-light:#ff7a33;
+  --dark:#0a0a0a;
+  --dark-card:#141414;
+  --dark-card2:#1a1a1a;
+  --border-card:rgba(255,90,0,0.2);
+  --border-card-subtle:rgba(255,255,255,0.08);
+  --white:#ffffff;
+  --gray:#a0a0a0;
+  --gray-light:#c5c5c5;
+  --red-glow:rgba(255,90,0,0.15);
+  --max-w:520px;
+}
+
+/* ========== CONTAINER ========== */
+.container{width:100%;max-width:var(--max-w);margin:0 auto;padding:0 20px}
+
+/* ========== HEADER / TOP BAR ========== */
+.top-bar{
+  background:linear-gradient(180deg,#111 0%,#0a0a0a 100%);
+  border-bottom:2px solid var(--orange);
+  padding:14px 20px;
+  display:flex;align-items:center;justify-content:center;
+  position:sticky;top:0;z-index:1000;
+}
+.logo-wrap{display:flex;align-items:center;gap:10px}
+.logo-wrap svg{width:38px;height:38px}
+.logo-text{font-size:1.15rem;font-weight:800;color:var(--white);letter-spacing:0.5px}
+.logo-text span{color:var(--orange)}
+
+/* ========== HERO ========== */
+.hero{
+  background:radial-gradient(ellipse at top center,rgba(255,90,0,0.12) 0%,transparent 70%);
+  padding:55px 20px 45px;
+  text-align:center;
+}
+.hero h1{
+  font-size:1.75rem;font-weight:900;line-height:1.2;
+  color:var(--white);margin-bottom:18px;
+}
+.hero h1 span{color:var(--orange)}
+.hero p{
+  font-size:1rem;color:var(--gray-light);line-height:1.65;
+  max-width:420px;margin:0 auto 30px;
+}
+.btn-primary{
+  display:inline-block;width:100%;max-width:420px;
+  background:linear-gradient(135deg,var(--orange) 0%,#e04500 100%);
+  color:var(--white);font-size:1.1rem;font-weight:700;
+  padding:18px 30px;border-radius:14px;
+  cursor:pointer;transition:all .3s;
+  box-shadow:0 4px 25px rgba(255,90,0,0.35);
+  text-align:center;border:none;
+}
+.btn-primary:hover{
+  background:linear-gradient(135deg,#e04500 0%,var(--orange) 100%);
+  transform:translateY(-2px);
+  box-shadow:0 6px 35px rgba(255,90,0,0.5);
+}
+.hero-sub{
+  font-size:.85rem;color:var(--gray);margin-top:14px;
+}
+
+/* ========== SEÇÃO GENÉRICA ========== */
+.section{padding:50px 20px}
+.section-title{
+  font-size:1.45rem;font-weight:900;text-align:center;
+  color:var(--white);line-height:1.25;margin-bottom:8px;
+}
+.section-title span{color:var(--orange)}
+.section-line{
+  width:60px;height:3px;background:var(--orange);
+  margin:12px auto 25px;border-radius:4px;
+}
+.section-desc{
+  text-align:center;color:var(--gray-light);
+  font-size:.95rem;line-height:1.65;max-width:440px;margin:0 auto 30px;
+}
+
+/* ========== POR QUE A VAGA ========== */
+.porque-vaga{
+  background:radial-gradient(ellipse at top center,rgba(255,90,0,0.08) 0%,transparent 60%);
+}
+.check-card{
+  background:var(--dark-card);
+  border:1px solid var(--border-card-subtle);
+  border-radius:14px;padding:20px 22px;
+  margin-bottom:14px;display:flex;align-items:flex-start;gap:14px;
+}
+.check-icon{
+  flex-shrink:0;width:36px;height:36px;
+  background:var(--orange);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+}
+.check-icon svg{width:18px;height:18px}
+.check-card p{font-size:.93rem;color:var(--gray-light);line-height:1.55}
+
+/* ========== O QUE É O MEP ========== */
+.mep-explain{background:var(--dark)}
+.highlight-box{
+  background:var(--dark-card);
+  border:1px solid var(--border-card);
+  border-radius:16px;padding:28px 22px;
+  margin-bottom:16px;
+}
+.highlight-box h3{
+  color:var(--orange);font-size:1.05rem;font-weight:700;margin-bottom:8px;
+}
+.highlight-box p{color:var(--gray-light);font-size:.9rem;line-height:1.6}
+
+/* ========== CARDS TÓPICOS ========== */
+.topic-card{
+  background:var(--dark-card);
+  border:1px solid var(--border-card-subtle);
+  border-radius:16px;padding:28px 22px;
+  margin-bottom:20px;
+}
+.topic-icon{
+  width:64px;height:64px;
+  background:linear-gradient(135deg,var(--orange) 0%,#cc4500 100%);
+  border-radius:14px;display:flex;align-items:center;justify-content:center;
+  margin-bottom:16px;
+}
+.topic-icon svg{width:32px;height:32px;color:var(--white)}
+.topic-card h3{
+  color:var(--orange);font-size:1.05rem;font-weight:700;margin-bottom:8px;
+}
+.topic-card p{color:var(--gray-light);font-size:.9rem;line-height:1.6}
+
+/* ========== PROVA SOCIAL ========== */
+.prova-social{
+  background:radial-gradient(ellipse at bottom center,rgba(255,90,0,0.08) 0%,transparent 60%);
+}
+.stats-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:25px;
+}
+.stat-card{
+  background:var(--dark-card);border:1px solid var(--border-card);
+  border-radius:14px;padding:22px 16px;text-align:center;
+}
+.stat-card .num{
+  font-size:1.6rem;font-weight:900;color:var(--orange);margin-bottom:4px;
+}
+.stat-card .label{font-size:.8rem;color:var(--gray-light)}
+.setores-list{
+  display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:10px;
+}
+.setores-list span{
+  background:var(--dark-card2);border:1px solid var(--border-card-subtle);
+  border-radius:30px;padding:8px 16px;font-size:.78rem;color:var(--gray-light);
+}
+
+/* ========== O QUE VAI DESCOBRIR ========== */
+.descobrir .mini-card{
+  background:var(--dark-card);border:1px solid var(--border-card-subtle);
+  border-radius:14px;padding:22px 22px;
+  margin-bottom:14px;display:flex;align-items:flex-start;gap:14px;
+}
+.mini-num{
+  flex-shrink:0;width:38px;height:38px;
+  background:var(--orange);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:.95rem;color:var(--white);
+}
+.descobrir .mini-card p{font-size:.9rem;color:var(--gray-light);line-height:1.55}
+
+/* ========== COMO FUNCIONA ========== */
+.como-funciona .info-cards{
+  display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:25px;
+}
+.info-card{
+  background:var(--dark-card);border:1px solid var(--border-card-subtle);
+  border-radius:14px;padding:22px 16px;text-align:center;
+}
+.info-card h4{font-size:1rem;font-weight:700;color:var(--white);margin-bottom:6px}
+.info-card p{font-size:.8rem;color:var(--gray)}
+.step-card{
+  background:var(--dark-card);border:1px solid var(--border-card-subtle);
+  border-radius:14px;padding:18px 22px;
+  margin-bottom:12px;display:flex;align-items:center;gap:14px;
+}
+.step-num{
+  flex-shrink:0;width:42px;height:42px;
+  background:var(--orange);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:1rem;color:var(--white);
+}
+.step-card p{font-size:.9rem;color:var(--gray-light);line-height:1.45}
+
+/* ========== FAQ ACCORDION ========== */
+.faq-item{
+  background:var(--dark-card);
+  border:1px solid var(--border-card);
+  border-radius:14px;margin-bottom:12px;overflow:hidden;
+}
+.faq-question{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:20px 22px;cursor:pointer;
+}
+.faq-question h4{font-size:.95rem;font-weight:700;color:var(--white);flex:1;padding-right:12px}
+.faq-toggle{
+  width:36px;height:36px;background:rgba(255,90,0,0.15);
+  border-radius:10px;display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;transition:all .3s;
+}
+.faq-toggle svg{width:18px;height:18px;color:var(--orange);transition:transform .3s}
+.faq-item.active .faq-toggle{background:var(--orange)}
+.faq-item.active .faq-toggle svg{color:var(--white);transform:rotate(45deg)}
+.faq-answer{
+  max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;
+  padding:0 22px;
+}
+.faq-item.active .faq-answer{
+  max-height:500px;padding:0 22px 22px;
+}
+.faq-answer p{font-size:.88rem;color:var(--gray-light);line-height:1.65}
+
+/* ========== QUESTIONÁRIO ========== */
+.form-section{
+  background:radial-gradient(ellipse at top center,rgba(255,90,0,0.1) 0%,transparent 60%);
+}
+.form-wrap{
+  background:var(--dark-card);border:1px solid var(--border-card);
+  border-radius:18px;padding:30px 22px;
+}
+.form-wrap h3{
+  font-size:1.15rem;font-weight:800;color:var(--white);margin-bottom:6px;text-align:center;
+}
+.form-wrap .form-sub{
+  font-size:.82rem;color:var(--gray);text-align:center;margin-bottom:22px;
+}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:.82rem;font-weight:600;color:var(--gray-light);margin-bottom:6px}
+.field input,.field select{
+  width:100%;padding:14px 16px;
+  background:#1a1a1a;border:1px solid rgba(255,255,255,0.1);
+  border-radius:12px;color:var(--white);font-size:.92rem;
+  transition:border-color .3s;
+}
+.field input:focus,.field select:focus{border-color:var(--orange)}
+.field select{appearance:none;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='%23FF5A00'%3E%3Cpath d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 16px center;
+}
+.radio-group{display:flex;gap:10px;margin-top:4px}
+.radio-option{
+  flex:1;padding:12px;text-align:center;
+  background:#1a1a1a;border:1px solid rgba(255,255,255,0.1);
+  border-radius:12px;cursor:pointer;font-size:.88rem;
+  color:var(--gray-light);transition:all .3s;
+}
+.radio-option.selected{
+  border-color:var(--orange);color:var(--orange);
+  background:rgba(255,90,0,0.08);
+}
+.btn-form{
+  width:100%;padding:16px;margin-top:10px;
+  background:linear-gradient(135deg,var(--orange) 0%,#e04500 100%);
+  color:var(--white);font-size:1.05rem;font-weight:700;
+  border-radius:14px;cursor:pointer;
+  box-shadow:0 4px 20px rgba(255,90,0,0.3);
+  transition:all .3s;border:none;
+}
+.btn-form:hover{transform:translateY(-2px);box-shadow:0 6px 30px rgba(255,90,0,0.45)}
+.btn-form:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
+
+/* ========== CALENDÁRIO ========== */
+.calendar-section{display:none}
+.calendar-section.active{display:block}
+.cal-banner{
+  background:linear-gradient(135deg,rgba(255,90,0,0.15),rgba(255,90,0,0.05));
+  border:1px solid var(--border-card);border-radius:14px;
+  padding:18px 22px;display:flex;align-items:center;gap:12px;
+  margin-bottom:25px;
+}
+.cal-banner .dot{
+  width:12px;height:12px;background:var(--orange);
+  border-radius:50%;flex-shrink:0;animation:pulse 2s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.cal-banner p{font-size:.92rem;font-weight:600;color:var(--white);text-align:center;flex:1}
+.cal-wrap{
+  background:var(--dark-card);border:1px solid var(--border-card);
+  border-radius:18px;padding:28px 20px;
+}
+.cal-wrap h3{font-size:1.1rem;font-weight:800;color:var(--white);margin-bottom:18px}
+.cal-info{
+  background:#1a1a1a;border-radius:12px;padding:16px;margin-bottom:20px;
+}
+.cal-info-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.cal-info-row:last-child{margin-bottom:0}
+.cal-info-row svg{width:18px;height:18px;color:var(--gray);flex-shrink:0}
+.cal-info-row span{font-size:.85rem;color:var(--gray-light)}
+.cal-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.cal-nav span{font-size:1rem;font-weight:700;color:var(--white)}
+.cal-nav button{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--dark-card2);border:1px solid rgba(255,255,255,0.1);
+  color:var(--orange);cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:all .3s;
+}
+.cal-nav button:hover{background:var(--orange);color:var(--white)}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:18px}
+.cal-head{text-align:center;font-size:.72rem;font-weight:600;color:var(--gray);padding:8px 0}
+.cal-day{
+  text-align:center;padding:10px 0;font-size:.85rem;
+  border-radius:10px;cursor:pointer;transition:all .2s;color:var(--gray);
+}
+.cal-day:hover{background:rgba(255,90,0,0.1);color:var(--white)}
+.cal-day.today{background:var(--orange);color:var(--white);font-weight:700}
+.cal-day.available{color:var(--orange);font-weight:600}
+.cal-day.selected{background:var(--orange);color:var(--white);font-weight:700}
+.cal-day.disabled{color:#333;cursor:default}
+.cal-day.disabled:hover{background:transparent;color:#333}
+.time-slots{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
+.time-slot{
+  padding:14px;text-align:center;
+  background:#1a1a1a;border:1px solid rgba(255,255,255,0.1);
+  border-radius:12px;font-size:.88rem;color:var(--gray-light);
+  cursor:pointer;transition:all .3s;
+}
+.time-slot:hover{border-color:var(--orange);color:var(--orange)}
+.time-slot.selected{
+  background:rgba(255,90,0,0.12);border-color:var(--orange);
+  color:var(--orange);font-weight:600;
+}
+.btn-agendar{
+  width:100%;padding:16px;
+  background:linear-gradient(135deg,var(--orange) 0%,#e04500 100%);
+  color:var(--white);font-size:1.05rem;font-weight:700;
+  border-radius:14px;cursor:pointer;
+  box-shadow:0 4px 20px rgba(255,90,0,0.3);
+  transition:all .3s;border:none;
+}
+.btn-agendar:hover{transform:translateY(-2px);box-shadow:0 6px 30px rgba(255,90,0,0.45)}
+.btn-agendar:disabled{opacity:.5;cursor:not-allowed;transform:none}
+
+/* ========== BARRA FIXA ========== */
+.fixed-bar{
+  position:fixed;bottom:0;left:0;right:0;z-index:999;
+  background:linear-gradient(180deg,rgba(10,10,10,0) 0%,#0a0a0a 15%,#0a0a0a 100%);
+  padding:12px 16px 14px;
+}
+.fixed-inner{
+  max-width:var(--max-w);margin:0 auto;
+  background:var(--dark-card);
+  border:1px solid var(--border-card);
+  border-radius:16px;padding:12px 18px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+}
+.fixed-left{display:flex;align-items:center;gap:10px}
+.fixed-dot{
+  width:10px;height:10px;background:var(--orange);
+  border-radius:50%;flex-shrink:0;animation:pulse 2s infinite;
+}
+.fixed-text{font-size:.82rem;font-weight:600;color:var(--white);line-height:1.3}
+.btn-fixed{
+  padding:12px 22px;
+  background:linear-gradient(135deg,var(--orange) 0%,#e04500 100%);
+  color:var(--white);font-size:.85rem;font-weight:700;
+  border-radius:12px;cursor:pointer;white-space:nowrap;
+  border:none;transition:all .3s;flex-shrink:0;
+}
+.btn-fixed:hover{box-shadow:0 4px 20px rgba(255,90,0,0.4)}
+
+/* ========== FOOTER ========== */
+.footer{
+  text-align:center;padding:40px 20px 30px;
+  border-top:1px solid rgba(255,255,255,0.06);
+}
+.footer-logo{margin:0 auto 12px;display:flex;align-items:center;justify-content:center;gap:8px}
+.footer p{font-size:.78rem;color:var(--gray)}
+
+/* ========== HIDDEN ========== */
+.hidden{display:none !important}
+
+/* ========== DESKTOP ========== */
+@media(min-width:600px){
+  .hero h1{font-size:2.2rem}
+  .section-title{font-size:1.65rem}
+  .container{padding:0 30px}
+  .stats-grid{grid-template-columns:repeat(4,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<header class="top-bar">
+  <div class="logo-wrap">
+    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="20" cy="20" r="19" stroke="#FF5A00" stroke-width="2"/>
+      <path d="M12 26L20 12L28 26H12Z" fill="#FF5A00"/>
+      <text x="16.5" y="24" font-size="8" font-weight="900" fill="#fff">$</text>
+    </svg>
+    <span class="logo-text">Economiza<span>360</span></span>
+  </div>
+</header>
+
+<!-- ========== HERO ========== -->
+<section class="hero" id="hero">
+  <div class="container">
+    <h1>Sua vaga está reservada — <span>mas não por muito tempo</span></h1>
+    <p>As vagas desta semana são limitadas e liberadas por ordem de preenchimento. Garanta agora a sessão MEP selecionada para o seu perfil:</p>
+    <button class="btn-primary" onclick="scrollToSection('questionario')">Confirmar minha vaga agora</button>
+    <p class="hero-sub">100% gratuito · online via Zoom · 45 minutos</p>
+  </div>
+</section>
+
+<!-- ========== POR QUE A VAGA FOI LIBERADA ========== -->
+<section class="section porque-vaga" id="porque-vaga">
+  <div class="container">
+    <h2 class="section-title">POR QUE ESTA VAGA FOI LIBERADA PARA <span>VOCÊ</span></h2>
+    <div class="section-line"></div>
+    <p class="section-desc">Esta sessão não é aberta ao público. Como você acabou de passar pela nossa verificação de perfil, já sabemos que você se encaixa em pelo menos um destes pontos:</p>
+
+    <div class="check-card">
+      <div class="check-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <p>Você já tem uma empresa com faturamento relevante e sente que o custo operacional está alto demais</p>
+    </div>
+
+    <div class="check-card">
+      <div class="check-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <p>Suspeita que está pagando impostos, taxas ou fornecedores acima do necessário — mas não sabe exatamente onde</p>
+    </div>
+
+    <div class="check-card">
+      <div class="check-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <p>Quer aumentar o caixa e a margem de lucro sem depender de vender mais — apenas eliminando perdas</p>
+    </div>
+
+    <div class="check-card">
+      <div class="check-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <p>Precisa de uma visão externa e especializada para encontrar onde o dinheiro está escapando na operação</p>
+    </div>
+  </div>
+</section>
+<!-- ========== O QUE É O MEP ========== -->
+<section class="section mep-explain" id="mep">
+  <div class="container">
+    <h2 class="section-title">O QUE É O <span>MEP</span></h2>
+    <div class="section-line"></div>
+    <p class="section-desc">O Mapa de Economia Potencial é uma sessão estratégica de 45 minutos onde nossos especialistas fazem um raio-X completo da sua operação financeira — e mostram exatamente onde sua empresa está sangrando dinheiro.</p>
+
+    <div class="highlight-box">
+      <h3>🔍 Diagnóstico Profundo</h3>
+      <p>Analisamos cada centro de custo, contrato, tributo e processo financeiro da sua empresa para identificar perdas que ninguém te mostrou.</p>
+    </div>
+
+    <div class="highlight-box">
+      <h3>💰 Recuperação de Valores</h3>
+      <p>Identificamos valores pagos indevidamente — impostos, taxas bancárias, cobranças duplicadas — e mostramos como recuperar esse dinheiro.</p>
+    </div>
+
+    <div class="highlight-box">
+      <h3>📊 Plano de Ação Imediato</h3>
+      <p>Você sai da sessão com um mapa claro de onde estão os desperdícios e o que fazer para eliminá-los — com estimativa de economia real em reais.</p>
+    </div>
+
+    <div style="text-align:center;margin-top:30px">
+      <button class="btn-primary" onclick="scrollToSection('questionario')">Garantir minha vaga no MEP</button>
+      <p class="hero-sub">Leva menos de 1 minuto · 100% gratuito</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== O QUE SERÁ ANALISADO (CARDS TÓPICOS) ========== -->
+<section class="section" id="topicos" style="background:radial-gradient(ellipse at bottom center,rgba(255,90,0,0.06) 0%,transparent 60%);">
+  <div class="container">
+    <h2 class="section-title">O QUE VOCÊ VAI SAIR SABENDO DESTE <span>DIAGNÓSTICO FINANCEIRO</span></h2>
+    <div class="section-line"></div>
+
+    <div class="topic-card">
+      <div class="topic-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+      </div>
+      <h3>Custos Operacionais</h3>
+      <p>Onde exatamente seus custos fixos e variáveis estão acima do benchmark do seu setor — e quanto você pode cortar sem perder qualidade</p>
+    </div>
+
+    <div class="topic-card">
+      <div class="topic-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+      </div>
+      <h3>Taxas e Tarifas Bancárias</h3>
+      <p>Quanto você está pagando a mais em tarifas de cartão, antecipação, boletos e operações financeiras — valores que vão direto pro ralo</p>
+    </div>
+
+    <div class="topic-card">
+      <div class="topic-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      </div>
+      <h3>Carga Tributária</h3>
+      <p>Se o seu enquadramento fiscal é o mais vantajoso, se existem créditos tributários não aproveitados e se você está pagando impostos que não deveria</p>
+    </div>
+
+    <div class="topic-card">
+      <div class="topic-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg>
+      </div>
+      <h3>Plano de Saúde e Benefícios</h3>
+      <p>Como renegociar planos de saúde empresariais e benefícios para economizar até 35% sem reduzir cobertura da equipe</p>
+    </div>
+
+    <div class="topic-card">
+      <div class="topic-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <h3>Contratos com Fornecedores</h3>
+      <p>Quais fornecedores estão cobrando acima do mercado, onde renegociar e como criar concorrência para baixar custos imediatamente</p>
+    </div>
+
+    <div class="topic-card">
+      <div class="topic-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+      </div>
+      <h3>Financiamentos e Dívidas</h3>
+      <p>Se suas dívidas e financiamentos atuais podem ser renegociados com taxas menores — liberando caixa que está preso em juros abusivos</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========== O QUE O EMPRESÁRIO VAI DESCOBRIR ========== -->
+<section class="section descobrir" id="descobrir">
+  <div class="container">
+    <h2 class="section-title">O QUE VOCÊ VAI <span>DESCOBRIR</span></h2>
+    <div class="section-line"></div>
+    <p class="section-desc">Na sessão MEP, nosso especialista vai abrir o mapa completo da sua operação e revelar:</p>
+
+    <div class="mini-card">
+      <div class="mini-num">1</div>
+      <p>O valor exato que sua empresa está perdendo por mês em custos invisíveis e cobranças indevidas</p>
+    </div>
+
+    <div class="mini-card">
+      <div class="mini-num">2</div>
+      <p>Quais contratos, taxas e tributos podem ser renegociados ou eliminados imediatamente</p>
+    </div>
+
+    <div class="mini-card">
+      <div class="mini-num">3</div>
+      <p>Quanto dinheiro pode ser recuperado de valores pagos indevidamente nos últimos 5 anos</p>
+    </div>
+
+    <div class="mini-card">
+      <div class="mini-num">4</div>
+      <p>Um plano de ação priorizado por impacto financeiro — o que cortar primeiro para gerar caixa rápido</p>
+    </div>
+
+    <div class="mini-card">
+      <div class="mini-num">5</div>
+      <p>O potencial real de economia anual da sua empresa — com números concretos e sem achismo</p>
+    </div>
+
+    <div style="text-align:center;margin-top:30px">
+      <button class="btn-primary" onclick="scrollToSection('questionario')">Quero descobrir minha economia → </button>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PROVA SOCIAL / AUTORIDADE ========== -->
+<section class="section prova-social" id="autoridade">
+  <div class="container">
+    <h2 class="section-title">POR QUE CONFIAR NA <span>ECONOMIZA360</span></h2>
+    <div class="section-line"></div>
+    <p class="section-desc">Somos especialistas em encontrar dinheiro perdido dentro de empresas. Nossos números falam por nós:</p>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="num">+9.000</div>
+        <div class="label">Diagnósticos realizados</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">+500</div>
+        <div class="label">Empresas atendidas</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">R$ 70M+</div>
+        <div class="label">Economizados para clientes</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">6+</div>
+        <div class="label">Setores de atuação</div>
+      </div>
+    </div>
+
+    <p class="section-desc" style="margin-top:10px;font-size:.85rem;">Setores que atendemos:</p>
+    <div class="setores-list">
+      <span>🏭 Indústria</span>
+      <span>🏪 Varejo</span>
+      <span>🍔 Franquias</span>
+      <span>🚛 Logística</span>
+      <span>🏗️ Construção Civil</span>
+      <span>💼 Serviços</span>
+    </div>
+
+    <div style="text-align:center;margin-top:35px">
+      <button class="btn-primary" onclick="scrollToSection('questionario')">Agendar minha sessão MEP gratuita</button>
+    </div>
+  </div>
+</section>
+
+<!-- ========== COMO FUNCIONA ========== -->
+<section class="section como-funciona" id="como-funciona">
+  <div class="container">
+    <h2 class="section-title">COMO <span>FUNCIONA</span></h2>
+    <div class="section-line"></div>
+
+    <div class="info-cards">
+      <div class="info-card">
+        <h4>Personalizado</h4>
+        <p>Análise focada no seu negócio</p>
+      </div>
+      <div class="info-card">
+        <h4>Vagas Limitadas</h4>
+        <p>Poucos horários por semana</p>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <p>Escolha o melhor horário disponível na agenda</p>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <p>Confirme seus dados em menos de 1 minuto</p>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <p>Receba o diagnóstico ao vivo com um especialista</p>
+    </div>
+
+  </div>
+</section>
+<!-- ========== FAQ ACCORDION ========== -->
+<section class="section" id="faq" style="background:var(--dark);">
+  <div class="container">
+    <h2 class="section-title">PERGUNTAS <span>FREQUENTES</span></h2>
+    <div class="section-line"></div>
+
+    <div class="faq-item active">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <h4>Por que esta sessão é gratuita?</h4>
+        <div class="faq-toggle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+      </div>
+      <div class="faq-answer">
+        <p>Porque é uma pré-avaliação: nosso objetivo é entender a fundo sua operação financeira e mostrar, na prática, onde estão os gastos invisíveis que drenam seu caixa. Liberamos poucas vagas por semana justamente para conseguir entregar essa análise com profundidade — sem cobrar nada e sem compromisso de contratação.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <h4>Quanto tempo dura a sessão MEP?</h4>
+        <div class="faq-toggle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+      </div>
+      <div class="faq-answer">
+        <p>A sessão dura aproximadamente 45 minutos. É tempo suficiente para nosso especialista analisar seus principais centros de custo, identificar perdas e apresentar o mapa de economia potencial com valores estimados.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <h4>Como e quem realiza o diagnóstico?</h4>
+        <div class="faq-toggle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+      </div>
+      <div class="faq-answer">
+        <p>O diagnóstico é conduzido por um consultor sênior da Economiza360, especialista em redução de custos empresariais. A sessão é 100% online via Zoom, personalizada para o seu segmento e porte de empresa.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <h4>Preciso preparar alguma coisa antes?</h4>
+        <div class="faq-toggle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+      </div>
+      <div class="faq-answer">
+        <p>Não é obrigatório, mas se puder ter em mãos informações como faturamento médio mensal, principais fornecedores, valor do plano de saúde e extratos bancários recentes, o diagnóstico fica ainda mais preciso e assertivo.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <h4>Para quais empresas o MEP funciona?</h4>
+        <div class="faq-toggle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+      </div>
+      <div class="faq-answer">
+        <p>O MEP é ideal para empresas com faturamento a partir de R$ 500 mil/ano em qualquer setor: franquias, indústria, logística, varejo, serviços, construção civil e outros. Se você tem despesas operacionais recorrentes, temos onde encontrar economia.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <h4>Tem algum compromisso de contratação?</h4>
+        <div class="faq-toggle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+      </div>
+      <div class="faq-answer">
+        <p>Zero compromisso. A sessão MEP é 100% gratuita e sem obrigação. Ao final, você recebe o mapa de economia e decide se quer que a Economiza360 execute o plano de ação. Sem pressão, sem pegadinha.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <h4>E se eu já tiver uma consultoria financeira?</h4>
+        <div class="faq-toggle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+      </div>
+      <div class="faq-answer">
+        <p>Ótimo. A maioria dos nossos clientes já tinha contador e consultoria — e mesmo assim encontramos economia significativa. Nosso foco é exclusivamente em redução de custos e recuperação de valores, uma especialidade que vai além da contabilidade tradicional.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========== SEÇÃO QUESTIONÁRIO ========== -->
+<section class="section form-section" id="questionario">
+  <div class="container">
+
+    <div class="cal-banner">
+      <div class="dot"></div>
+      <p>Vaga reservada no seu nome — preencha para confirmar</p>
+    </div>
+
+    <!-- STEP 1: FORMULÁRIO -->
+    <div id="formStep" class="form-wrap">
+      <h3>Confirme seus dados</h3>
+      <p class="form-sub">Leva menos de 1 minuto · 100% seguro</p>
+
+      <form id="leadForm" onsubmit="return false;">
+
+        <div class="field">
+          <label for="nome">Nome completo *</label>
+          <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
+        </div>
+
+        <div class="field">
+          <label for="email">E-mail corporativo *</label>
+          <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+        </div>
+
+        <div class="field">
+          <label for="telefone">Telefone / WhatsApp *</label>
+          <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" required>
+        </div>
+
+        <div class="field">
+          <label for="cargo">Qual seu cargo? *</label>
+          <select id="cargo" name="cargo" required>
+            <option value="" disabled selected>Selecione seu cargo</option>
+            <option value="Sócio-Fundador">Sócio-Fundador / CEO</option>
+            <option value="Diretor">Diretor</option>
+            <option value="Gerente">Gerente</option>
+            <option value="Coordenador">Coordenador</option>
+            <option value="Analista">Analista</option>
+            <option value="Outro">Outro</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Possui plano de saúde no CNPJ? *</label>
+          <div class="radio-group">
+            <div class="radio-option" data-field="plano_saude" data-value="Sim" onclick="selectRadio(this)">Sim</div>
+            <div class="radio-option" data-field="plano_saude" data-value="Não" onclick="selectRadio(this)">Não</div>
+          </div>
+          <input type="hidden" id="plano_saude" name="plano_saude" required>
+        </div>
+
+        <div class="field">
+          <label>Possui fornecedor fixo? *</label>
+          <div class="radio-group">
+            <div class="radio-option" data-field="fornecedor_fixo" data-value="Sim" onclick="selectRadio(this)">Sim</div>
+            <div class="radio-option" data-field="fornecedor_fixo" data-value="Não" onclick="selectRadio(this)">Não</div>
+          </div>
+          <input type="hidden" id="fornecedor_fixo" name="fornecedor_fixo" required>
+        </div>
+
+        <div class="field">
+          <label>Possui financiamento ativo ou dívida ativa? *</label>
+          <div class="radio-group">
+            <div class="radio-option" data-field="divida_ativa" data-value="Sim" onclick="selectRadio(this)">Sim</div>
+            <div class="radio-option" data-field="divida_ativa" data-value="Não" onclick="selectRadio(this)">Não</div>
+          </div>
+          <input type="hidden" id="divida_ativa" name="divida_ativa" required>
+        </div>
+
+        <button type="button" class="btn-form" id="btnAvancar" onclick="avancarParaCalendario()">
+          Avançar para escolher horário →
+        </button>
+
+      </form>
+    </div>
+
+    <!-- STEP 2: CALENDÁRIO -->
+    <div id="calendarStep" class="calendar-section">
+
+      <div class="cal-wrap">
+        <h3>Escolha um dos horários abaixo:</h3>
+
+        <div class="cal-info">
+          <div class="cal-info-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>45 min</span>
+          </div>
+          <div class="cal-info-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span id="calSelectedDate">Selecione uma data</span>
+          </div>
+          <div class="cal-info-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <span>America/Sao_Paulo (GMT-3)</span>
+          </div>
+        </div>
+
+        <!-- NAVEGAÇÃO DO CALENDÁRIO -->
+        <div class="cal-nav">
+          <button onclick="changeMonth(-1)" aria-label="Mês anterior">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <span id="calMonthYear">Junho 2026</span>
+          <button onclick="changeMonth(1)" aria-label="Próximo mês">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+
+        <!-- GRID DO CALENDÁRIO -->
+        <div class="cal-grid" id="calGrid">
+          <div class="cal-head">Seg</div>
+          <div class="cal-head">Ter</div>
+          <div class="cal-head">Qua</div>
+          <div class="cal-head">Qui</div>
+          <div class="cal-head">Sex</div>
+          <div class="cal-head">Sáb</div>
+          <div class="cal-head">Dom</div>
+          <!-- Dias preenchidos via JS -->
+        </div>
+
+        <!-- HORÁRIOS -->
+        <div id="timeSlotWrap" class="hidden">
+          <p style="font-size:.9rem;font-weight:600;color:var(--white);margin-bottom:12px;">Horários disponíveis:</p>
+          <div class="time-slots" id="timeSlots">
+            <!-- Preenchido via JS -->
+          </div>
+        </div>
+
+        <!-- BOTÃO AGENDAR -->
+        <button class="btn-agendar" id="btnAgendar" onclick="agendarWhatsApp()" disabled>
+          Agendar minha sessão MEP →
+        </button>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-logo">
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+        <circle cx="20" cy="20" r="19" stroke="#FF5A00" stroke-width="2"/>
+        <path d="M12 26L20 12L28 26H12Z" fill="#FF5A00"/>
+        <text x="16.5" y="24" font-size="8" font-weight="900" fill="#fff">$</text>
+      </svg>
+      <span class="logo-text">Economiza<span style="color:#FF5A00">360</span></span>
+    </div>
+    <p>© 2026 Economiza360. Todos os direitos reservados.</p>
+    <p style="margin-top:6px;font-size:.72rem;color:#555;">Especialistas em redução de custos e recuperação de valores empresariais.</p>
+  </div>
+</footer>
+
+<!-- ========== BARRA FIXA INFERIOR ========== -->
+<div class="fixed-bar" id="fixedBar">
+  <div class="fixed-inner">
+    <div class="fixed-left">
+      <div class="fixed-dot"></div>
+      <div class="fixed-text">Vaga reservada<br>para você</div>
+    </div>
+    <button class="btn-fixed" onclick="scrollToSection('questionario')">Confirmar agora</button>
+  </div>
+</div>
+
+<!-- ========== JAVASCRIPT COMPLETO ========== -->
+<script>
+/* =============================================
+   CONFIGURAÇÃO — ALTERE AQUI
+============================================= */
+const WHATSAPP_LINK = 'INSERIR_LINK_DO_WHATS_AQUI'; 
+// Exemplo: https://wa.me/5511999999999
+
+const HORARIOS_DISPONIVEIS = ['09:00','09:45','10:30','11:15','14:00','14:45','15:30','16:15','17:00'];
+
+/* =============================================
+   VARIÁVEIS GLOBAIS
+============================================= */
+let currentMonth = 5; // Junho (0-indexed)
+let currentYear = 2026;
+let selectedDate = null;
+let selectedTime = null;
+let formData = {};
+
+/* =============================================
+   SMOOTH SCROLL
+============================================= */
+function scrollToSection(id) {
+  const el = document.getElementById(id);
+  if (el) {
+    const offset = 70;
+    const top = el.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+  }
+}
+
+/* =============================================
+   FAQ ACCORDION
+============================================= */
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const wasActive = item.classList.contains('active');
+  
+  // Fecha todos
+  document.querySelectorAll('.faq-item').forEach(function(faq) {
+    faq.classList.remove('active');
+  });
+  
+  // Abre o clicado (se não estava aberto)
+  if (!wasActive) {
+    item.classList.add('active');
+  }
+}
+
+/* =============================================
+   RADIO BUTTONS CUSTOMIZADOS
+============================================= */
+function selectRadio(el) {
+  const field = el.getAttribute('data-field');
+  const value = el.getAttribute('data-value');
+  
+  // Remove seleção do grupo
+  el.parentElement.querySelectorAll('.radio-option').forEach(function(opt) {
+    opt.classList.remove('selected');
+  });
+  
+  // Seleciona o clicado
+  el.classList.add('selected');
+  
+  // Seta valor no hidden input
+  document.getElementById(field).value = value;
+}
+
+/* =============================================
+   MÁSCARA TELEFONE
+============================================= */
+document.addEventListener('DOMContentLoaded', function() {
+  const telInput = document.getElementById('telefone');
+  if (telInput) {
+    telInput.addEventListener('input', function(e) {
+      let val = e.target.value.replace(/\D/g, '');
+      if (val.length > 11) val = val.substring(0, 11);
+      
+      if (val.length > 6) {
+        val = '(' + val.substring(0,2) + ') ' + val.substring(2,7) + '-' + val.substring(7);
+      } else if (val.length > 2) {
+        val = '(' + val.substring(0,2) + ') ' + val.substring(2);
+      } else if (val.length > 0) {
+        val = '(' + val;
+      }
+      
+      e.target.value = val;
+    });
+  }
+
+  // Renderiza calendário inicial
+  renderCalendar();
+});
+
+/* =============================================
+   VALIDAÇÃO + AVANÇO PARA CALENDÁRIO
+============================================= */
+function avancarParaCalendario() {
+  const nome = document.getElementById('nome').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const telefone = document.getElementById('telefone').value.trim();
+  const cargo = document.getElementById('cargo').value;
+  const planoSaude = document.getElementById('plano_saude').value;
+  const fornecedorFixo = document.getElementById('fornecedor_fixo').value;
+  const dividaAtiva = document.getElementById('divida_ativa').value;
+
+  // Validações
+  if (!nome) { shakeField('nome'); return alert('Por favor, preencha seu nome.'); }
+  if (!email || !isValidEmail(email)) { shakeField('email'); return alert('Por favor, insira um e-mail válido.'); }
+  if (!telefone || telefone.replace(/\D/g,'').length < 10) { shakeField('telefone'); return alert('Por favor, insira um telefone válido.'); }
+  if (!cargo) { shakeField('cargo'); return alert('Por favor, selecione seu cargo.'); }
+  if (!planoSaude) { return alert('Por favor, informe se possui plano de saúde no CNPJ.'); }
+  if (!fornecedorFixo) { return alert('Por favor, informe se possui fornecedor fixo.'); }
+  if (!dividaAtiva) { return alert('Por favor, informe se possui financiamento ou dívida ativa.'); }
+
+  // Salva dados do formulário
+  formData = {
+    nome: nome,
+    email: email,
+    telefone: telefone,
+    cargo: cargo,
+    planoSaude: planoSaude,
+    fornecedorFixo: fornecedorFixo,
+    dividaAtiva: dividaAtiva
+  };
+
+  // Esconde form, mostra calendário
+  document.getElementById('formStep').style.display = 'none';
+  document.getElementById('calendarStep').classList.add('active');
+  
+  // Scroll suave pro calendário
+  setTimeout(function() {
+    scrollToSection('questionario');
+  }, 200);
+}
+
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function shakeField(id) {
+  const el = document.getElementById(id);
+  el.style.borderColor = '#ff3333';
+  el.style.animation = 'shake 0.4s ease';
+  setTimeout(function() {
+    el.style.borderColor = '';
+    el.style.animation = '';
+  }, 600);
+}
+
+/* =============================================
+   CALENDÁRIO — RENDERIZAÇÃO
+============================================= */
+const MESES = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+const DIAS_SEMANA_CURTO = ['Seg','Ter','Qua','Qui','Sex','Sáb','Dom'];
+
+function renderCalendar() {
+  const grid = document.getElementById('calGrid');
+  const monthYearEl = document.getElementById('calMonthYear');
+  
+  // Limpa grid (mantém headers)
+  const headers = grid.querySelectorAll('.cal-head');
+  grid.innerHTML = '';
+  headers.forEach(function(h) { grid.appendChild(h); });
+  
+  // Atualiza título
+  monthYearEl.textContent = MESES[currentMonth] + ' ' + currentYear;
+  
+  // Primeiro dia do mês (0=Dom, 1=Seg ... 6=Sab)
+  const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+  // Ajuste para Seg=0 ... Dom=6
+  const startDay = (firstDay === 0) ? 6 : firstDay - 1;
+  
+  // Total de dias no mês
+  const totalDays = new Date(currentYear, currentMonth + 1, 0).getDate();
+  
+  // Hoje
+  const today = new Date();
+  const todayDate = today.getDate();
+  const todayMonth = today.getMonth();
+  const todayYear = today.getFullYear();
+  
+  // Dias vazios antes
+  for (let i = 0; i < startDay; i++) {
+    const empty = document.createElement('div');
+    empty.className = 'cal-day disabled';
+    empty.textContent = '';
+    grid.appendChild(empty);
+  }
+  
+  // Dias do mês
+  for (let d = 1; d <= totalDays; d++) {
+    const dayEl = document.createElement('div');
+    dayEl.className = 'cal-day';
+    dayEl.textContent = d;
+    
+    const thisDate = new Date(currentYear, currentMonth, d);
+    const dayOfWeek = thisDate.getDay(); // 0=Dom, 6=Sab
+    
+    // Desabilita fins de semana e dias passados
+    const isPast = (currentYear < todayYear) || 
+                   (currentYear === todayYear && currentMonth < todayMonth) || 
+                   (currentYear === todayYear && currentMonth === todayMonth && d < todayDate);
+    
+    const isWeekend = (dayOfWeek === 0 || dayOfWeek === 6);
+    
+    if (isPast || isWeekend) {
+      dayEl.classList.add('disabled');
+    } else {
+      // Marca hoje
+      if (d === todayDate && currentMonth === todayMonth && currentYear === todayYear) {
+        dayEl.classList.add('today');
+      }
+      
+      // Marca dias disponíveis (dias úteis futuros — destacar próximos 5 úteis)
+      const diffDays = Math.floor((thisDate - today) / (1000 * 60 * 60 * 24));
+      if (diffDays >= 0 && diffDays <= 10 && !isWeekend) {
+        dayEl.classList.add('available');
+      }
+      
+      // Clique
+      dayEl.addEventListener('click', function() {
+        selectCalendarDay(d, dayEl);
+      });
+    }
+    
+    grid.appendChild(dayEl);
+  }
+}
+
+function changeMonth(dir) {
+  currentMonth += dir;
+  if (currentMonth > 11) {
+    currentMonth = 0;
+    currentYear++;
+  } else if (currentMonth < 0) {
+    currentMonth = 11;
+    currentYear--;
+  }
+  
+  // Não permite meses passados
+  const now = new Date();
+  if (currentYear < now.getFullYear() || (currentYear === now.getFullYear() && currentMonth < now.getMonth())) {
+    currentMonth = now.getMonth();
+    currentYear = now.getFullYear();
+  }
+  
+  selectedDate = null;
+  selectedTime = null;
+  document.getElementById('timeSlotWrap').classList.add('hidden');
+  document.getElementById('btnAgendar').disabled = true;
+  document.getElementById('calSelectedDate').textContent = 'Selecione uma data';
+  
+  renderCalendar();
+}
+
+/* =============================================
+   CALENDÁRIO — SELEÇÃO DE DIA
+============================================= */
+function selectCalendarDay(day, el) {
+  // Remove seleção anterior
+  document.querySelectorAll('.cal-day.selected').forEach(function(d) {
+    d.classList.remove('selected');
+  });
+  
+  el.classList.add('selected');
+  
+  const dateObj = new Date(currentYear, currentMonth, day);
+  const diasSemana = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+  const diaSemana = diasSemana[dateObj.getDay()];
+  
+  const dateStr = diaSemana + ', ' + pad(day) + ' de ' + MESES[currentMonth].substring(0,3) + ' de ' + currentYear;
+  
+  selectedDate = {
+    day: day,
+    month: currentMonth,
+    year: currentYear,
+    formatted: dateStr,
+    full: pad(day) + '/' + pad(currentMonth + 1) + '/' + currentYear
+  };
+  
+  document.getElementById('calSelectedDate').textContent = dateStr;
+  
+  // Mostra horários
+  renderTimeSlots();
+  
+  // Reset time
+  selectedTime = null;
+  document.getElementById('btnAgendar').disabled = true;
+}
+
+function pad(n) {
+  return n < 10 ? '0' + n : '' + n;
+}
+
+/* =============================================
+   TIME SLOTS — RENDERIZAÇÃO
+============================================= */
+function renderTimeSlots() {
+  const wrap = document.getElementById('timeSlotWrap');
+  const container = document.getElementById('timeSlots');
+  
+  wrap.classList.remove('hidden');
+  container.innerHTML = '';
+  
+  HORARIOS_DISPONIVEIS.forEach(function(hora) {
+    const slot = document.createElement('div');
+    slot.className = 'time-slot';
+    slot.textContent = hora;
+    slot.addEventListener('click', function() {
+      selectTimeSlot(hora, slot);
+    });
+    container.appendChild(slot);
+  });
+  
+  // Scroll para os horários
+  setTimeout(function() {
+    wrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 200);
+}
+
+/* =============================================
+   TIME SLOTS — SELEÇÃO
+============================================= */
+function selectTimeSlot(hora, el) {
+  // Remove seleção anterior
+  document.querySelectorAll('.time-slot.selected').forEach(function(s) {
+    s.classList.remove('selected');
+  });
+  
+  el.classList.add('selected');
+  selectedTime = hora;
+  
+  // Habilita botão agendar
+  document.getElementById('btnAgendar').disabled = false;
+}
+
+/* =============================================
+   AGENDAR — REDIRECIONAMENTO WHATSAPP
+============================================= */
+function agendarWhatsApp() {
+  if (!selectedDate || !selectedTime) {
+    return alert('Por favor, selecione uma data e horário.');
+  }
+  
+  // Monta mensagem
+  const msg = '🔶 *NOVO AGENDAMENTO MEP — Economiza360*\n\n' +
+    '👤 *Nome:* ' + formData.nome + '\n' +
+    '📧 *E-mail:* ' + formData.email + '\n' +
+    '📱 *Telefone:* ' + formData.telefone + '\n' +
+    '💼 *Cargo:* ' + formData.cargo + '\n' +
+    '🏥 *Plano de saúde:* ' + formData.planoSaude + '\n' +
+    '📦 *Fornecedor fixo:* ' + formData.fornecedorFixo + '\n' +
+    '💳 *Financiamento/dívida:* ' + formData.dividaAtiva + '\n\n' +
+    '📅 *Data:* ' + selectedDate.full + '\n' +
+    '🕐 *Horário:* ' + selectedTime + '\n\n' +
+    'Gostaria de confirmar minha sessão MEP. ✅';
+  
+  // Monta link WhatsApp
+  let whatsLink = WHATSAPP_LINK;
+  
+  // Se for wa.me, adiciona texto
+  if (whatsLink.includes('wa.me') || whatsLink.includes('api.whatsapp.com')) {
+    const separator = whatsLink.includes('?') ? '&' : '?';
+    whatsLink += separator + 'text=' + encodeURIComponent(msg);
+  } else {
+    // Fallback
+    whatsLink = 'https://wa.me/?text=' + encodeURIComponent(msg);
+  }
+  
+  // Redireciona
+  window.location.href = whatsLink;
+}
+
+/* =============================================
+   ANIMAÇÃO SHAKE (CSS dinâmico)
+============================================= */
+const shakeStyle = document.createElement('style');
+shakeStyle.textContent = '@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}';
+document.head.appendChild(shakeStyle);
+
+/* =============================================
+   BARRA FIXA — ESCONDE SE ESTIVER NA SEÇÃO
+============================================= */
+let fixedBarTimeout;
+function handleFixedBar() {
+  const bar = document.getElementById('fixedBar');
+  const hero = document.getElementById('hero');
+  
+  if (!bar || !hero) return;
+  
+  const heroBottom = hero.getBoundingClientRect().bottom;
+  
+  if (heroBottom > 0) {
+    bar.style.opacity = '0';
+    bar.style.pointerEvents = 'none';
+  } else {
+    bar.style.opacity = '1';
+    bar.style.pointerEvents = 'all';
+  }
+}
+
+window.addEventListener('scroll', function() {
+  clearTimeout(fixedBarTimeout);
+  fixedBarTimeout = setTimeout(handleFixedBar, 50);
+});
+
+// Init
+document.addEventListener('DOMContentLoaded', function() {
+  handleFixedBar();
+  
+  // Transição suave da barra fixa
+  const bar = document.getElementById('fixedBar');
+  if (bar) {
+    bar.style.transition = 'opacity 0.3s ease';
+  }
+});
+
+/* =============================================
+   CONTAGEM REGRESSIVA SUTIL (urgência)
+============================================= */
+(function() {
+  // Adiciona contador de vagas restantes no hero
+  const heroSub = document.querySelector('.hero-sub');
+  if (heroSub) {
+    let vagasBase = 3;
+    const stored = sessionStorage.getItem('vagas_mep');
+    if (stored) {
+      vagasBase = parseInt(stored);
+    } else {
+      vagasBase = Math.floor(Math.random() * 3) + 2; // 2 a 4
+      sessionStorage.setItem('vagas_mep', vagasBase);
+    }
+    
+    const vagasSpan = document.createElement('span');
+    vagasSpan.style.cssText = 'display:block;margin-top:8px;color:#FF5A00;font-weight:700;font-size:.88rem;';
+    vagasSpan.textContent = '⚠️ Apenas ' + vagasBase + ' vagas restantes esta semana';
+    heroSub.parentElement.insertBefore(vagasSpan, heroSub.nextSibling);
+  }
+})();
+</script>
+
+</body>
+</html>
